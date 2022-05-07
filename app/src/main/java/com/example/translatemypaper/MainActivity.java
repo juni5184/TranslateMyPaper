@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tvPageCount;
     ImageView imgGetPDF;
+    Button btnOpenPDF, btnPrev, btnNext, btnRunOCR;
 
     PdfRenderer renderer;
     int total_pages = 0;
@@ -28,14 +29,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
-        Button btnOpenPDF = findViewById(R.id.btn_open_pdf);
-        Button btnPrev = findViewById(R.id.btn_prev);
-        Button btnNext = findViewById(R.id.btn_next);
+        btnOpenPDF = findViewById(R.id.btn_open_pdf);
+        btnPrev = findViewById(R.id.btn_prev);
+        btnNext = findViewById(R.id.btn_next);
+        btnRunOCR = findViewById(R.id.btn_run_ocr);
+
         tvPageCount = findViewById(R.id.tv_cnt);
         imgGetPDF = findViewById(R.id.img_get_pdf);
 
+        // PDF open
         btnOpenPDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnRunOCR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -92,11 +102,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // 화면 전환
     private void _display(int _n) {
         if (renderer != null) {
             PdfRenderer.Page page = renderer.openPage(_n);
             Bitmap mBitmap = Bitmap.createBitmap(page.getWidth(), page.getHeight(), Bitmap.Config.ARGB_8888);
             page.render(mBitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY);
+            // 이미지 set
             imgGetPDF.setImageBitmap(mBitmap);
             page.close();
             tvPageCount.setText((_n + 1) + "/" + total_pages);
