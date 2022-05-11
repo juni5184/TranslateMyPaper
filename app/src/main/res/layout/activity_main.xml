@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/img_get_pdf"
         android:layout_width="400dp"
-        android:layout_height="450dp"
+        android:layout_height="600dp"
         android:layout_gravity="center"
         android:layout_margin="15dp"
         android:background="@color/white"

@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
             // creating a variable for pdf reader
             // and passing our PDF file in it.
-            PdfReader reader = new PdfReader("res/raw/sample3.pdf");
+            PdfReader reader = new PdfReader("res/raw/thelastleaf1page.pdf");
 //            Log.i("uri", uri+"");
 //            PdfReader reader = new PdfReader(uri+"");
 
